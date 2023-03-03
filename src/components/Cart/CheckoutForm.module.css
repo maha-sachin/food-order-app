@@ -60,5 +60,9 @@
   
   .invalid input {
     border-color: #aa0b20;
-    background-color: #ffeff1;
+    background-color: #dc9aa2;
   }
+  .error-text {
+    color: #b40e0e;
+  }
+  
