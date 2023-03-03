@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import classes from "./CheckoutForm.module.css";
 
 const CheckoutForm = (props) => {
