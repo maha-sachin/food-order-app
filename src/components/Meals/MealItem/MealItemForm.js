@@ -15,7 +15,7 @@ const MealItemForm = (props) => {
     const enteredAmountNumber = +enteredAmountStr;
 
     console.log(amountInputRef.current);
-
+// Validation Code
     if (
       enteredAmountStr.trim().length === 0 ||
       enteredAmountNumber < 0 ||
@@ -37,7 +37,7 @@ const MealItemForm = (props) => {
           id: "amount_" + props.id,
           type: "number",
           min: "1",
-          //   max: "5",
+          max: "5",
           step: "1",
           defaultValue: "1",
         }}

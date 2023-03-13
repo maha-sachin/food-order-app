@@ -1,21 +1,31 @@
 import React, { useState } from "react";
+import useInput from "../hooks/use-input";
 import classes from "./CheckoutForm.module.css";
 
 const CheckoutForm = (props) => {
-  const [enteredName, setEnteredName] = useState("");
+  const {
+    value: enteredName,
+    isValid: enteredNameIsValid,
+    hasError: nameInputHasError,
+    valueChangeHandler: nameChangedHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetNameInput,
+  } = useInput((value) => value.trim() !== "");
+
+  //   const [enteredName, setEnteredName] = useState("");
   const [enteredStreet, setEnteredStreet] = useState("");
   const [enteredCity, setEnteredCity] = useState("");
   const [enteredPostalCode, setEnteredPostalCode] = useState("");
 
-  const [enteredNameIsTouched, setEnteredNameIsTouched] = useState(false);
+  //   const [enteredNameIsTouched, setEnteredNameIsTouched] = useState(false);
   const [enteredStreetIsTouched, setEnteredStreetIsTouched] = useState(false);
   const [enteredCityIsTouched, setEnteredCityIsTouched] = useState(false);
   const [enteredPostalCodeIsTouched, setEnteredPostalCodeIsTouched] = useState(
     false
   );
 
-  const enteredNameIsValid = enteredName.trim() !== "";
-  const nameInputIsInValid = !enteredNameIsValid && enteredNameIsTouched;
+  //   const enteredNameIsValid = enteredName.trim() !== "";
+  //   const nameInputIsInValid = !enteredNameIsValid && enteredNameIsTouched;
 
   const enteredStreetIsValid = enteredStreet.trim() !== "";
   const streetInputIsInValid = !enteredStreetIsValid && enteredStreetIsTouched;
@@ -27,10 +37,10 @@ const CheckoutForm = (props) => {
   const postalCodeInputIsInValid =
     !enteredPostalCodeIsValid && enteredPostalCodeIsTouched;
 
-  const inputNameHandler = (event) => {
-    setEnteredName(event.target.value);
-    setEnteredNameIsTouched(true);
-  };
+  //   const inputNameHandler = (event) => {
+  //     setEnteredName(event.target.value);
+  //     setEnteredNameIsTouched(true);
+  //   };
   const inputStreetHandler = (event) => {
     setEnteredStreet(event.target.value);
     setEnteredStreetIsTouched(true);
@@ -42,14 +52,14 @@ const CheckoutForm = (props) => {
   const inputPostalCodeHandler = (event) => {
     setEnteredPostalCode(event.target.value);
     setEnteredPostalCodeIsTouched(true);
-    console.log("inputPostalCodeHandler");
+    //console.log("inputPostalCodeHandler");
   };
 
   const inputBlurHandler = (event) => {
     switch (event.target.id) {
-      case "name":
-        setEnteredNameIsTouched(true);
-        break;
+      //   case "name":
+      //     setEnteredNameIsTouched(true);
+      //     break;
       case "street":
         setEnteredStreetIsTouched(true);
         break;
@@ -69,10 +79,10 @@ const CheckoutForm = (props) => {
 
   const formSubmittionHandler = (event) => {
     event.preventDefault();
-    setEnteredNameIsTouched(true);
-    setEnteredCityIsTouched(true);
-    setEnteredPostalCodeIsTouched(true);
-    setEnteredStreetIsTouched(true);
+    // setEnteredNameIsTouched(true);
+    // setEnteredCityIsTouched(true);
+    // setEnteredPostalCodeIsTouched(true);
+    // setEnteredStreetIsTouched(true);
 
     //enteredName is empty is not run
     const formIsValid =
@@ -88,7 +98,8 @@ const CheckoutForm = (props) => {
     // if (!enteredNameIsValid ) {
     //   return;
     // }
-    console.log(enteredName);
+    console.log("submitted..");
+    console.log(enteredName, enteredCity, enteredStreet, enteredPostalCode);
 
     //submit the cart data
     props.onConfirmOrder({
@@ -98,8 +109,10 @@ const CheckoutForm = (props) => {
       postalCode: enteredPostalCode,
     });
 
-    setEnteredName("");
-    setEnteredNameIsTouched(false);
+    // setEnteredName("");
+    // setEnteredNameIsTouched(false);
+    resetNameInput();
+
     setEnteredStreet("");
     setEnteredStreetIsTouched(false);
     setEnteredCity("");
@@ -109,7 +122,7 @@ const CheckoutForm = (props) => {
   };
 
   const nameControlledClasses = `${classes.control}
-   ${nameInputIsInValid ? classes.invalid : ""}`;
+   ${nameInputHasError ? classes.invalid : ""}`;
 
   const streetControlledClasses = `${classes.control}
     ${streetInputIsInValid ? classes.invalid : ""}`;
@@ -127,11 +140,13 @@ const CheckoutForm = (props) => {
         <input
           type="text"
           id="name"
-          onChange={inputNameHandler}
-          onBlur={inputBlurHandler}
+          //   onChange={inputNameHandler}
+          onChange={nameChangedHandler}
+          //onBlur={inputBlurHandler}
+          onBlur={nameBlurHandler}
           value={enteredName}
         ></input>
-        {nameInputIsInValid && enteredNameIsTouched && (
+        {nameInputHasError && (
           <p className="error-text">Name must not be empty,Enter Valid Name</p>
         )}
       </div>
@@ -175,11 +190,15 @@ const CheckoutForm = (props) => {
         )}
       </div>
 
-      <div className={classes.action}>
-        <button className={classes.submit}> Confirm </button>
-        <button type="button" onClick={props.onCancel}>
+      <div className={classes.actions}>
+        <button
+          type="button"
+          onClick={props.onCancel}
+          className={classes["button--alt"]}
+        >
           Cancel
         </button>
+        <button className={classes.button}> Confirm </button>
       </div>
     </form>
   );
