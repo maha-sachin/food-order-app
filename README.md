@@ -4,8 +4,11 @@ This project is to show my capabilities in React.
 
 ## Here's features included in this project:
 Add to cart functionality
+```
 Shopping cart functionality
+```
 Cart and checkout page
+```
 Order details and  form validation
 
 
