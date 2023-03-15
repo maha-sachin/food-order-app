@@ -1,6 +1,7 @@
 # Food Order App:
 
 This project is to show my capabilities in React.
+```
 
 ## Here's features included in this project:
 Add to cart functionality
