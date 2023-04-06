@@ -1,6 +1,8 @@
+// import { Modal } from "@mui/material";
 import React, { useState } from "react";
+import Modal from "./components/UI/Modal";
 import { lazy, Suspense } from "react";
-import Header from "./components/Layout/Header";
+import Header from "./components/Header/Header";
 import Meals from "./components/Meals/Meals";
 //import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
@@ -8,22 +10,36 @@ import CartProvider from "./store/CartProvider";
 const Cart = lazy(() => import("./components/Cart/Cart.js"));
 
 function App() {
-  const [cartIsShown, setCartIsShown] = useState(false);
+  const [isCartShown, setIsCartShown] = useState(false);
+  const [isWorkingHours, setIsWorkingHours] = useState(true);
 
   const showCartHandler = () => {
-    setCartIsShown(true);
+    setIsCartShown(true);
   };
 
   const hideCartHandler = () => {
-    setCartIsShown(false);
+    setIsCartShown(false);
+  };
+
+  const hideOfflineModel = () => {
+    setIsWorkingHours(true);
   };
 
   return (
     <CartProvider>
-      {cartIsShown && (
+      {isCartShown && (
         <Suspense fallback={<p>Loading...</p>}>
           <Cart onCloseCartBtn={hideCartHandler} />
         </Suspense>
+      )}
+      {!isWorkingHours && (
+        <Modal onCloseModal={hideOfflineModel}>
+          <p>We are offline as of now, do enjoy these quotes below</p>
+          <p>
+            “Part of the secret of success is to eat what you like and let the
+            food fight it out inside.”
+          </p>
+        </Modal>
       )}
       <Header onShowCartFromHeader={showCartHandler} />
       <main>

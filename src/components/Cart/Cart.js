@@ -37,6 +37,7 @@ const Cart = (props) => {
     // send request to the backend ,send used data and cart data
     await fetch(
       "https://foodorder-7968b-default-rtdb.firebaseio.com/orders.json",
+
       {
         method: "POST",
         body: JSON.stringify({
@@ -97,8 +98,8 @@ const Cart = (props) => {
       {/* {!showCheckout && modalActions} */}
     </React.Fragment>
   );
-  // is shown we submit the form
-  const setIsSubmittingModalContent = <p>sending oder data...</p>;
+  // is shown when we submit the form
+  const setIsSubmittingModalContent = <p>sending order data...</p>;
   const didSubmitModalContent = (
     <React.Fragment>
       <p>

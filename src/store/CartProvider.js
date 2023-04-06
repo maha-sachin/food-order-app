@@ -19,7 +19,6 @@ const cartReducer = (state, action) => {
 
             //check if the item already part of the cart,this will return index of that item if exist
         const existingCartItemIndex=state.items.findIndex(item=> item.id === action.item.id)
-
         const existingCartItem = state.items[existingCartItemIndex]
         const updatedTotalAmount = state.totalAmount + action.item.price * action.item.amount
 
@@ -80,7 +79,7 @@ const cartReducer = (state, action) => {
 
 }
 
-//goal of this component smply manage the cartContext data and provide that context to all comp that one acces to it
+//goal of this component simply manage the cartContext data and provide that context to all comp that one acces to it
 const CartProvider = (props) => {
 
 
