@@ -1,12 +1,12 @@
-// import { Modal } from "@mui/material";
 import React, { useState } from "react";
 import Modal from "./components/UI/Modal";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header/Header";
 import Meals from "./components/Meals/Meals";
-//import Cart from "./components/Cart/Cart";
+
 import CartProvider from "./store/CartProvider";
 
+//Todo : Lazy loading done here
 const Cart = lazy(() => import("./components/Cart/Cart.js"));
 
 function App() {

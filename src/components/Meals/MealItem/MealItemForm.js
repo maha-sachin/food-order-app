@@ -4,7 +4,7 @@ import classes from "./MealItemForm.module.css";
 import Input from "../../UI/Input";
 
 const MealItemForm = (props) => {
-  //state snpshot and state updating function
+  
   const [amountIsValid, setAmountIsValid] = useState(true);
   const amountInputRef = useRef();
 
@@ -15,7 +15,7 @@ const MealItemForm = (props) => {
     const enteredAmountNumber = +enteredAmountStr;
 
     console.log(amountInputRef.current);
-// Validation Code
+
     if (
       enteredAmountStr.trim().length === 0 ||
       enteredAmountNumber < 0 ||
@@ -24,7 +24,7 @@ const MealItemForm = (props) => {
       setAmountIsValid(false);
       return;
     }
-    // call a function expect to get on props to MealItem Component
+    
     props.onAddToCart(enteredAmountNumber);
   };
 
