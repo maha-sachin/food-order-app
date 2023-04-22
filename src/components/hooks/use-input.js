@@ -13,9 +13,9 @@ const useInput = (validatetValue) => {
   };
 
   const inputBlurHandler = (event) => {
-    setEnteredValue(event.target.id);
+    setEnteredValue(event.target.value);
     setIsTouched(true);
-    console.info("blur", event.target.id);
+    //console.info("blur", event.target.id);
   };
 
   const reset = () => {
