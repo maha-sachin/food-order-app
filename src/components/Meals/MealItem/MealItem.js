@@ -9,7 +9,7 @@ const MealItem = (props) => {
   const price = `$${props.price.toFixed(2)}`;
 
   const addToCartHandler = (amount) => {
-    // rechanged context
+   
     cartCtx.addItem({
       id: props.id,
       name: props.name,
@@ -20,12 +20,10 @@ const MealItem = (props) => {
   return (
     <li className={classes.meal}>
       <div>
-        {/* use prop name same as available meal data */}
         <h3>{props.name}</h3>
         <div className={classes.description}>{props.description}</div>
         <div className={classes.price}>{price}</div>
       </div>
-      {/* allow user to enter amount */}
       <div>
         <MealItemForm onAddToCart={addToCartHandler} />
       </div>

@@ -7,7 +7,6 @@ import CartContext from "../../store/cart-context";
 import CheckoutForm from "./CheckoutForm";
 
 const Cart = (props) => {
-  // const [showCheckout, setShowCheckout] = useState(false);
   const [isSubmit, setIsSubmitting] = useState(false);
   const [didSubmit, setDidSubmit] = useState(false);
 
@@ -21,23 +20,17 @@ const Cart = (props) => {
   };
 
   const cartItemAddHandler = (item) => {
-    // addItem will trigger the addItem function in the cart provider component
+    // DEMO UseContext consume
+    // NOTE addItem will trigger the addItem function in the cart provider component
     cartCtx.addItem({ ...item, amount: 1 });
   };
-  // const showCheckoutHandler = () => {
-  //   setShowCheckout(true);
-  // };
-  // const hideCheckoutHandler = () => {
-  //   setShowCheckout(false);
-  // };
 
-  //where data should submit to the server
   const submitOrderHandler = async (userData) => {
     setIsSubmitting(true);
-    // send request to the backend ,send used data and cart data
+    // NOTE calling firebase
+    // DEMO
     await fetch(
       "https://foodorder-7968b-default-rtdb.firebaseio.com/orders.json",
-
       {
         method: "POST",
         body: JSON.stringify({
@@ -67,20 +60,6 @@ const Cart = (props) => {
     </ul>
   );
 
-  // const modalActions = (
-  //   <div className={classes.actions}>
-  //     <button className={classes["button--alt"]} onClick={props.onCloseCartBtn}>
-  //       Close
-  //     </button>
-
-  //     {hasItems && (
-  //       <button className={classes.button} onClick={showCheckoutHandler}>
-  //         Order
-  //       </button>
-  //     )}
-  //   </div>
-  // );
-
   const cartModalContent = (
     <React.Fragment>
       {cartItems}
@@ -94,11 +73,9 @@ const Cart = (props) => {
           onCancel={props.onCloseCartBtn}
         />
       )}
-
-      {/* {!showCheckout && modalActions} */}
     </React.Fragment>
   );
-  // is shown when we submit the form
+
   const setIsSubmittingModalContent = <p>sending order data...</p>;
   const didSubmitModalContent = (
     <React.Fragment>
@@ -115,10 +92,7 @@ const Cart = (props) => {
   );
 
   return (
-    // onCloseModal props from modal.js and forward props.onCloseCartBtn witch is being set from the app.js component
     <Modal onCloseModal={props.onCloseCartBtn}>
-      {/* console.log(props.onCloseCartBtn,'hello close') */}
-      {/* TODO change below code to make it readable */}
       {!isSubmit && !didSubmit && cartModalContent}
       {isSubmit && setIsSubmittingModalContent}
       {!isSubmit && didSubmit && didSubmitModalContent}

@@ -12,20 +12,15 @@ const CheckoutForm = (props) => {
     reset: resetNameInput,
   } = useInput((value) => value.trim() !== "");
 
-  //   const [enteredName, setEnteredName] = useState("");
   const [enteredStreet, setEnteredStreet] = useState("");
   const [enteredCity, setEnteredCity] = useState("");
   const [enteredPostalCode, setEnteredPostalCode] = useState("");
 
-  //   const [enteredNameIsTouched, setEnteredNameIsTouched] = useState(false);
   const [enteredStreetIsTouched, setEnteredStreetIsTouched] = useState(false);
   const [enteredCityIsTouched, setEnteredCityIsTouched] = useState(false);
   const [enteredPostalCodeIsTouched, setEnteredPostalCodeIsTouched] = useState(
     false
   );
-
-  //   const enteredNameIsValid = enteredName.trim() !== "";
-  //   const nameInputIsInValid = !enteredNameIsValid && enteredNameIsTouched;
 
   const enteredStreetIsValid = enteredStreet.trim() !== "";
   const streetInputIsInValid = !enteredStreetIsValid && enteredStreetIsTouched;
@@ -37,10 +32,6 @@ const CheckoutForm = (props) => {
   const postalCodeInputIsInValid =
     !enteredPostalCodeIsValid && enteredPostalCodeIsTouched;
 
-  //   const inputNameHandler = (event) => {
-  //     setEnteredName(event.target.value);
-  //     setEnteredNameIsTouched(true);
-  //   };
   const inputStreetHandler = (event) => {
     setEnteredStreet(event.target.value);
     setEnteredStreetIsTouched(true);
@@ -52,14 +43,10 @@ const CheckoutForm = (props) => {
   const inputPostalCodeHandler = (event) => {
     setEnteredPostalCode(event.target.value);
     setEnteredPostalCodeIsTouched(true);
-    //console.log("inputPostalCodeHandler");
   };
 
   const inputBlurHandler = (event) => {
     switch (event.target.id) {
-      //   case "name":
-      //     setEnteredNameIsTouched(true);
-      //     break;
       case "street":
         setEnteredStreetIsTouched(true);
         break;
@@ -73,18 +60,10 @@ const CheckoutForm = (props) => {
       default:
         break;
     }
-
-    console.info("blur", event.target.id);
   };
 
   const formSubmittionHandler = (event) => {
     event.preventDefault();
-    // setEnteredNameIsTouched(true);
-    // setEnteredCityIsTouched(true);
-    // setEnteredPostalCodeIsTouched(true);
-    // setEnteredStreetIsTouched(true);
-
-    //enteredName is empty is not run
     const formIsValid =
       enteredNameIsValid &&
       enteredCityIsValid &&
@@ -95,13 +74,6 @@ const CheckoutForm = (props) => {
       return;
     }
 
-    // if (!enteredNameIsValid ) {
-    //   return;
-    // }
-    console.log("submitted..");
-    console.log(enteredName, enteredCity, enteredStreet, enteredPostalCode);
-
-    //submit the cart data
     props.onConfirmOrder({
       name: enteredName,
       street: enteredStreet,
@@ -109,10 +81,7 @@ const CheckoutForm = (props) => {
       postalCode: enteredPostalCode,
     });
 
-    // setEnteredName("");
-    // setEnteredNameIsTouched(false);
     resetNameInput();
-
     setEnteredStreet("");
     setEnteredStreetIsTouched(false);
     setEnteredCity("");
@@ -140,9 +109,7 @@ const CheckoutForm = (props) => {
         <input
           type="text"
           id="name"
-          //   onChange={inputNameHandler}
           onChange={nameChangedHandler}
-          //onBlur={inputBlurHandler}
           onBlur={nameBlurHandler}
           value={enteredName}
         ></input>

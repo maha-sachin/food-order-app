@@ -13,26 +13,15 @@ const useInput = (validatetValue) => {
   };
 
   const inputBlurHandler = (event) => {
-    setEnteredValue(event.target.id);
+    setEnteredValue(event.target.value);
     setIsTouched(true);
-    console.info("blur", event.target.id);
+    //console.info("blur", event.target.id);
   };
 
   const reset = () => {
     setEnteredValue("");
     setIsTouched(false);
   };
-
-  //   const inputBlurHandler = (event) => {
-  //     switch (event.target.id) {
-  //       case "name":
-  //         setIsTouched(true);
-  //         break;
-
-  //     }
-
-  //     console.info("blur", event.target.id);
-  //   };
 
   return {
     value: enteredValue,

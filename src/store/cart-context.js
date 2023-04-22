@@ -3,11 +3,11 @@ import React from "react";
 const CartContext=React.createContext({
     items:[],
     totalAmount:0,
-    //functions to update the context
+    //NOTE functions to update the context
     addItem:(item)=>{},
-    //id to identify item which removed from the cart
+    //NOTE id to identify item which removed from the cart
     remove:(id)=>{},
-    //clearCart after order submitting
+    //NOTEclearCart after order submitting
     clear:()=>{}
 
 })

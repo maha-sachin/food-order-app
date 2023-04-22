@@ -9,7 +9,6 @@ const HeaderCartButton = (props) => {
 
   const cartCtx = useContext(CartContext);
 
-  //object deStructing
   const { items } = cartCtx;
 
   const numberOfCartItems = items.reduce((currentNum, item) => {
@@ -22,15 +21,13 @@ const HeaderCartButton = (props) => {
   useEffect(() => {
     if (items.length === 0) {
       return;
-      //rest of the function doesn't execute
     }
     setBtnIsHighLighted(true);
 
-    // animation: bump 300ms ease-out;settimeout 300
+    // NOTE: animation: bump 300ms ease-out;settimeout 300
     const timer = setTimeout(() => {
       setBtnIsHighLighted(false);
     }, 300);
-    // return cleanup function
     return () => {
       clearTimeout(timer);
     };
