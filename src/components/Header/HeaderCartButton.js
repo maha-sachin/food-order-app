@@ -15,9 +15,8 @@ const HeaderCartButton = (props) => {
     return currentNum + item.amount;
   }, 0);
 
-  const buttonClass = `${classes.button} ${
-    btnIsHighLighted ? classes.bump : ""
-  }`;
+  const buttonClass = `${classes.button} ${btnIsHighLighted ? classes.bump : ""
+    }`;
   useEffect(() => {
     if (items.length === 0) {
       return;
@@ -34,12 +33,12 @@ const HeaderCartButton = (props) => {
   }, [items]);
 
   return (
-    <button className={buttonClass} onClick={props.onClickHeaderCartBtn}>
+    <button data-testid='cart-button' className={buttonClass} onClick={props.onClickHeaderCartBtn}>
       <span className={classes.icon}>
         <CartIcon />
       </span>
-      <span>Your Cart</span>
-      <span className={classes.badge}>{numberOfCartItems}</span>
+      <span >Your Cart</span>
+      <span data-testid='cart-badge' className={classes.badge}>{numberOfCartItems}</span>
     </button>
   );
 };
