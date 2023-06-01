@@ -29,3 +29,6 @@ npm start
 
 ## TBC
 
+## Deploy
+https://www.knowledgehut.com/blog/web-development/deploying-react-app-to-firebase
+
