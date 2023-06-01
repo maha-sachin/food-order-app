@@ -1,6 +1,8 @@
 # Food Order App:
 
 This project is to show my capabilities in React.
+## Deployed Link:
+https://foodorder-7968b.web.app/
 
 
 ## Here's features included in this project:
