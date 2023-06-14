@@ -8,7 +8,7 @@ const defaultCartState = {
 };
 
 const cartReducer = (state, action) => {
-  //DEMO ADD TO CART - group item for the same meals together and manage the amount per meal prices
+  //DEMO 1 ADD TO CART - group item for the same meals together and manage the amount per meal prices
   if (action.identifier === "Add-Cart-Item") {
     //check if the item already part of the cart,this will return index of that item if exist
     const existingCartItemIndex = state.items.findIndex(
@@ -35,7 +35,7 @@ const cartReducer = (state, action) => {
       totalAmount: updatedTotalAmount,
     };
   }
-  //DEMO DELETE FROM CART
+  //DEMO 1.1 DELETE FROM CART
   if (action.identifier === "Remove-Cart-Item") {
     const existingCartItemIndex = state.items.findIndex(
       (item) => item.id === action.id

@@ -6,6 +6,8 @@ import Header from './Header'
 import CartContext from '../../store/cart-context';
 
 
+
+
 describe("Header Component", () => {
 	it('loads and displays "YummyTreat"', async () => {
 		// ARRANGE

@@ -11,5 +11,15 @@ describe("renders Mealsummary Component",()=>{
         const element=screen.getByRole("heading")
         expect(element).toHaveTextContent("Delicious Food, Delivered To You")
     })
+    test("displays paragraph content",()=>{
+        render(<MealsSummary/>)
+        const paragraphElement=screen.getByTestId("meal-summary1")
+        expect(paragraphElement).toBeInTheDocument()
+    })
+    test("displays paragraph content",()=>{
+        render(<MealsSummary/>)
+        const paragraphElement=screen.getByTestId("meal-summary2")
+        expect(paragraphElement).toBeInTheDocument()
+    })
     
 })

@@ -17,6 +17,7 @@ const HeaderCartButton = (props) => {
 
   const buttonClass = `${classes.button} ${btnIsHighLighted ? classes.bump : ""
     }`;
+  //DEMO 3 BUTTONCLASS INCLUDE BUMP ANIMATION , SET THE TIMER TO REMOVES CLASSES AGAIN, SO ITS ADDED AGAIN IN FUTURE IT AGAIN PLAYS 
   useEffect(() => {
     if (items.length === 0) {
       return;
